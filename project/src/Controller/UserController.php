@@ -7,6 +7,8 @@ use App\Repository\ClientRepository;
 use App\Repository\UserRepository;
 use App\Service\VersioningService;
 use Doctrine\ORM\EntityManagerInterface;
+use OpenApi\Annotations as OA;
+use Psr\Cache\InvalidArgumentException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,10 +21,28 @@ use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializationContext;
 use JMS\Serializer\SerializerInterface;
 use Symfony\Contracts\Cache\TagAwareCacheInterface;
+use Nelmio\ApiDocBundle\Annotation\Model;
+use Nelmio\ApiDocBundle\Annotation\Security;
 
 
 class UserController extends AbstractController
 {
+    /**
+     * Cette méthode permet de récupérer l'ensemble des utilisateurs du client connecté.
+     *
+     * @OA\Response(
+     *     response=200,
+     *     description="Retourne la liste des utilisateurs",
+     *     @Model(type=User::class, groups={"getUsers"})
+     *     )
+     * )
+     * @OA\Tag(name="Users")
+     *
+     * @param UserRepository $userRepository
+     * @param SerializerInterface $serializer
+     * @param VersioningService $versioningService
+     * @return JsonResponse
+     */
     #[Route(
         path: '/api/users',
         name: 'api_users',
@@ -38,6 +58,25 @@ class UserController extends AbstractController
         return new JsonResponse($jsonUserList, Response::HTTP_OK, [], true);
     }
 
+    /**
+     * Cette méthode permet de créer un utilisateur pour le client connecté.
+     *
+     * @OA\Response(
+     *     response=200,
+     *     description="Crée un utilisateur lié à un client",
+     *     @Model(type=User::class, groups={"getUsers"})
+     *     )
+     * )
+     * @OA\Tag(name="Users")
+     *
+     * @param Request $request
+     * @param SerializerInterface $serializer
+     * @param EntityManagerInterface $manager
+     * @param UrlGeneratorInterface $urlGenerator
+     * @param ClientRepository $clientRepository
+     * @param ValidatorInterface $validator
+     * @return JsonResponse
+     */
     #[Route(
         path: '/api/users',
         name: 'api_create_user',
@@ -72,6 +111,22 @@ class UserController extends AbstractController
         return new JsonResponse($jsonUser, Response::HTTP_CREATED, ["Location" => $location], true);
     }
 
+    /**
+     * Cette méthode permet d'obtenir le détail d' un utilisateur du client connecté.
+     *
+     * @OA\Response(
+     *     response=200,
+     *     description="Affiche les détails d'un utilisateur lié à un client",
+     *     @Model(type=User::class, groups={"getUsers"})
+     *     )
+     * )
+     * @OA\Tag(name="Users")
+     *
+     * @param User $user
+     * @param SerializerInterface $serializer
+     * @param VersioningService $versioningService
+     * @return JsonResponse
+     */
     #[Route(
         path: '/api/users/{id}',
         name: 'api_detailUser',
@@ -91,6 +146,28 @@ class UserController extends AbstractController
         }
     }
 
+    /**
+     * Cette méthode permet de mettre à jour les informations d'un utilisateur du client connecté.
+     *
+     * @OA\Response(
+     *     response=200,
+     *     description="Mets à jour les détails d'un utilisateur lié à un client",
+     *     @Model(type=User::class, groups={"getUsers"})
+     *     )
+     * )
+     * @OA\Tag(name="Users")
+     *
+     * @param Request $request
+     * @param User $currentUser
+     * @param SerializerInterface $serializer
+     * @param EntityManagerInterface $manager
+     * @param ClientRepository $clientRepository
+     * @param VersioningService $versioningService
+     * @param ValidatorInterface $validator
+     * @param TagAwareCacheInterface $cache
+     * @return JsonResponse
+     * @throws InvalidArgumentException
+     */
     #[Route(
         path: '/api/users/{id}',
         name: 'api_updateUser',
@@ -141,6 +218,21 @@ class UserController extends AbstractController
         }
     }
 
+    /**
+     * Cette méthode permet de supprimer un utilisateur d'un client connecté.
+     *
+     * @OA\Response(
+     *     response=200,
+     *     description="Supprime un utilisateur lié à un client",
+     *     @Model(type=User::class, groups={"getUsers"})
+     *     )
+     * )
+     * @OA\Tag(name="Users")
+     *
+     * @param User $user
+     * @param EntityManagerInterface $manager
+     * @return JsonResponse
+     */
     #[Route(
         path: '/api/users/{id}',
         name: 'api_deleteUser',

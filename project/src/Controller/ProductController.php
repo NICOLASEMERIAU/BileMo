@@ -55,7 +55,10 @@ class ProductController extends AbstractController
      * @param ProductRepository $productRepository
      * @param SerializerInterface $serializer
      * @param Request $request
+     * @param TagAwareCacheInterface $cache
+     * @param VersioningService $versioningService
      * @return JsonResponse
+     * @throws InvalidArgumentException
      */
     #[Route(
         path: '/api/products',
@@ -86,6 +89,22 @@ class ProductController extends AbstractController
         return new JsonResponse($jsonProductList, Response::HTTP_OK, [], true);
     }
 
+    /**
+     * Cette méthode permet de récupérer un produit en particulier.
+     *
+     * @OA\Response(
+     *     response=200,
+     *     description="Retourne le détail d'un produit",
+     *     @Model(type=Product::class, groups={"getProducts"})
+     *     )
+     * )
+     * @OA\Tag(name="Products")
+     *
+     * @param Product $product
+     * @param SerializerInterface $serializer
+     * @param VersioningService $versioningService
+     * @return JsonResponse
+     */
     #[Route(
         path: '/api/products/{id}',
         name: 'api_detailProduct',
@@ -100,7 +119,24 @@ class ProductController extends AbstractController
         return new JsonResponse($jsonProduct, Response::HTTP_OK, [], true);
     }
 
-
+    /**
+     * Cette méthode permet à l'administrateur de créer un produit.
+     *
+     * @OA\Response(
+     *     response=200,
+     *     description="Création d'un produit",
+     *     @Model(type=Product::class, groups={"getProducts"})
+     *     )
+     * )
+     * @OA\Tag(name="Products")
+     *
+     * @param Request $request
+     * @param SerializerInterface $serializer
+     * @param EntityManagerInterface $manager
+     * @param UrlGeneratorInterface $urlGenerator
+     * @param ValidatorInterface $validator
+     * @return JsonResponse
+     */
     #[Route(
         path: '/api/products',
         name: 'api_create_product',
@@ -134,7 +170,23 @@ class ProductController extends AbstractController
         return new JsonResponse($jsonProduct, Response::HTTP_CREATED, ["Location" => $location], true);
     }
 
-
+    /**
+     * Cette méthode permet à l'administrateur de supprimer un produit.
+     *
+     * @OA\Response(
+     *     response=200,
+     *     description="Suppression d'un produit",
+     *     @Model(type=Product::class, groups={"getProducts"})
+     *     )
+     * )
+     * @OA\Tag(name="Products")
+     *
+     * @param EntityManagerInterface $manager
+     * @param Product $product
+     * @param TagAwareCacheInterface $cache
+     * @return JsonResponse
+     * @throws InvalidArgumentException
+     */
     #[Route(
         path: '/api/products/{id}',
         name: 'api_delete_product',
