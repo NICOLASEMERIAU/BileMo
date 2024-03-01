@@ -43,6 +43,7 @@ class AppFixtures extends Fixture
             $user = new User();
             $user->setClient($clients[array_rand($clients)]);
             $user->setUsername('name'.$j);
+            $user->setComment('commentaire'.$j);
             $manager->persist($user);
         }
 
