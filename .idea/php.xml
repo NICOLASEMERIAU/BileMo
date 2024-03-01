@@ -147,6 +147,15 @@
       <path value="$PROJECT_DIR$/project/vendor/phpdocumentor/reflection-docblock" />
       <path value="$PROJECT_DIR$/project/vendor/phpdocumentor/reflection-common" />
       <path value="$PROJECT_DIR$/project/vendor/phpstan/phpdoc-parser" />
+      <path value="$PROJECT_DIR$/project/vendor/doctrine/doctrine-fixtures-bundle" />
+      <path value="$PROJECT_DIR$/project/vendor/doctrine/data-fixtures" />
+      <path value="$PROJECT_DIR$/project/vendor/sensio/framework-extra-bundle" />
+      <path value="$PROJECT_DIR$/project/vendor/nelmio/api-doc-bundle" />
+      <path value="$PROJECT_DIR$/project/vendor/zircote/swagger-php" />
+      <path value="$PROJECT_DIR$/project/vendor/namshi/jose" />
+      <path value="$PROJECT_DIR$/project/vendor/lcobucci/clock" />
+      <path value="$PROJECT_DIR$/project/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/project/vendor/lexik/jwt-authentication-bundle" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1" />
