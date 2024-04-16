@@ -62,12 +62,14 @@ class UserController extends AbstractController
      * Cette méthode permet de créer un utilisateur pour le client connecté.
      *
      * @OA\Response(
-     *     response=200,
+     *     response=201,
      *     description="Crée un utilisateur lié à un client",
      *     @Model(type=User::class, groups={"getUsers"})
      *     )
      * )
      * @OA\Tag(name="Users")
+     *
+     * @OA\RequestBody(@Model(type=User::class, groups={"create"}))
      *
      * @param Request $request
      * @param SerializerInterface $serializer
@@ -156,6 +158,7 @@ class UserController extends AbstractController
      *     )
      * )
      * @OA\Tag(name="Users")
+     * @OA\RequestBody(@Model(type=User::class, groups={"update"}))
      *
      * @param Request $request
      * @param User $currentUser
@@ -222,9 +225,8 @@ class UserController extends AbstractController
      * Cette méthode permet de supprimer un utilisateur d'un client connecté.
      *
      * @OA\Response(
-     *     response=200,
-     *     description="Supprime un utilisateur lié à un client",
-     *     @Model(type=User::class, groups={"getUsers"})
+     *     response=204,
+     *     description="Supprime un utilisateur lié à un client"
      *     )
      * )
      * @OA\Tag(name="Users")

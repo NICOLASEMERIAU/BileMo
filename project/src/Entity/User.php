@@ -50,7 +50,7 @@ class User
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(["getUsers"])]
+    #[Groups(["getUsers", "create", "update"])]
     #[Assert\NotBlank(message: "Le nom est obligatoire")]
     #[Assert\Length(min: 2, max: 255, minMessage: "Le nom doit faire au moins {{ limit }} caractères", maxMessage: "Le nom doit faire au maximum {{ limit }} caractères")]
     private ?string $username = null;
@@ -60,7 +60,7 @@ class User
     private ?Client $client = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    #[Groups(["getUsers"])]
+    #[Groups(["getUsers", "create", "update"])]
     #[Since("2.0")]
     private ?string $comment = null;
 
