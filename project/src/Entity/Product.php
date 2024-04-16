@@ -40,26 +40,26 @@ class Product
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(["getProducts"])]
+    #[Groups(["getProducts", "create"])]
     #[Assert\NotBlank(message: "Le titre du produit est obligatoire")]
     #[Assert\Length(min: 1, max: 255, minMessage: "Le titre doit faire au moins {{ limit }} caractères", maxMessage: "Le titre doit faire au maximum {{ limit }} caractères")]
     private ?string $title = null;
 
     #[ORM\Column(nullable: true)]
-    #[Groups(["getProducts"])]
+    #[Groups(["getProducts", "create"])]
     #[Assert\PositiveOrZero(message: "Le prix doit être égal ou supérieur à zéro.")]
     private ?float $price = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    #[Groups(["getProducts"])]
+    #[Groups(["getProducts", "create"])]
     private ?string $description = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    #[Groups(["getProducts"])]
+    #[Groups(["getProducts", "create"])]
     private ?string $features = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    #[Groups(["getProducts"])]
+    #[Groups(["getProducts", "create"])]
     private ?string $text = null;
 
     public function getId(): ?int

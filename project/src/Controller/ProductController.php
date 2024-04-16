@@ -129,6 +129,7 @@ class ProductController extends AbstractController
      *     )
      * )
      * @OA\Tag(name="Products")
+     * @OA\RequestBody(@Model(type=Product::class, groups={"create"}))
      *
      * @param Request $request
      * @param SerializerInterface $serializer
@@ -174,9 +175,8 @@ class ProductController extends AbstractController
      * Cette méthode permet à l'administrateur de supprimer un produit.
      *
      * @OA\Response(
-     *     response=200,
-     *     description="Suppression d'un produit",
-     *     @Model(type=Product::class, groups={"getProducts"})
+     *     response=204,
+     *     description="Suppression d'un produit"
      *     )
      * )
      * @OA\Tag(name="Products")
