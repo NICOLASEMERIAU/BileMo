@@ -47,6 +47,7 @@ php bin/console doctrine:fixtures:load
 ```sh
 php bin/console lexik:jwt:generate-keypair
 ```
+* Then add in "Authorize" => "bearer TOKEN"
 * Let's go to http://localhost:8741/api/doc
 
 ## Bugs and Issues
