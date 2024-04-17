@@ -43,6 +43,9 @@ php bin/console doctrine:migrations:migrate
 ```sh
 php bin/console doctrine:fixtures:load
 ```
+```sh
+php bin/console lexik:jwt:generate-keypair
+```
 * Configure your mail parameters in the file .env et le service MailerService.php
 * Let's go to http://localhost:8741/api/doc
 
