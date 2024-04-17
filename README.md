@@ -43,7 +43,7 @@ php bin/console doctrine:migrations:migrate
 ```sh
 php bin/console doctrine:fixtures:load
 ```
-*Activate jwt
+* Activate jwt
 ```sh
 php bin/console lexik:jwt:generate-keypair
 ```
