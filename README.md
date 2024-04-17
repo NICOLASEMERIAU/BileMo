@@ -1,14 +1,15 @@
-# [Start Snowtricks]
+# [Start BileMo]
 
-Snowtricks is a website created by Nicolas Emeriau. 
-This website contains a blog about snowboard tricks. 
+BileMo is an API created by Nicolas Emeriau. 
+This API contains access to BileMo products. 
+This allows a seller to integrate BileMo products into their catalog.
 
 ## Getting Started
 
 Before using this website, follow this to get started:
 * Clone the repo: 
 ```sh
-`git clone git@github.com:NICOLASEMERIAU/snowtricks.git
+`git clone git@github.com:NICOLASEMERIAU/bilemo63.git
 ```
 * Install docker environment, make sure to have updated version of docker and docker-compose.
 * Go to the folder "blog" and open a terminal
@@ -19,7 +20,7 @@ docker compose build --no-cache
 docker compose up -d
 ```
 ```sh
-docker exec -it www_docker_symfony bash
+docker exec -it www_docker_symfony_bilemo bash
 ```
 * Dans bash :
 ```sh
@@ -43,11 +44,11 @@ php bin/console doctrine:migrations:migrate
 php bin/console doctrine:fixtures:load
 ```
 * Configure your mail parameters in the file .env et le service MailerService.php
-* Let's go to http://localhost:8741/
+* Let's go to http://localhost:8741/api/doc
 
 ## Bugs and Issues
 
-Have a bug or an issue with this blog? [Open a new issue](https://github.com/NICOLASEMERIAU/snowtricks/issues/new) here on GitHub.
+Have a bug or an issue with this blog? [Open a new issue](https://github.com/NICOLASEMERIAU/bilemo63/issues/new) here on GitHub.
 
 ## Creator
 
