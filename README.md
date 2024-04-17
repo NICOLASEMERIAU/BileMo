@@ -12,7 +12,7 @@ Before using this website, follow this to get started:
 `git clone git@github.com:NICOLASEMERIAU/bilemo63.git
 ```
 * Install docker environment, make sure to have updated version of docker and docker-compose.
-* Go to the folder "blog" and open a terminal
+* Go to the folder "bilemo63" and open a terminal
 ```sh
 docker compose build --no-cache
 ```
@@ -30,7 +30,7 @@ cd project
 composer install
 ```
 
-* Create your database and your first fixtures with orders from the container www_docker_symfony
+* Create your database and your first fixtures with orders from the container www_docker_symfony_bilemo
 ```sh
 php bin/console doctrine:database:create
 ```
@@ -43,10 +43,10 @@ php bin/console doctrine:migrations:migrate
 ```sh
 php bin/console doctrine:fixtures:load
 ```
+*Activate jwt
 ```sh
 php bin/console lexik:jwt:generate-keypair
 ```
-* Configure your mail parameters in the file .env et le service MailerService.php
 * Let's go to http://localhost:8741/api/doc
 
 ## Bugs and Issues
