@@ -9,10 +9,10 @@ This allows a seller to integrate BileMo products into their catalog.
 Before using this website, follow this to get started:
 * Clone the repo: 
 ```sh
-`git clone git@github.com:NICOLASEMERIAU/bilemo63.git
+`git clone git@github.com:NICOLASEMERIAU/bilemo.git
 ```
 * Install docker environment, make sure to have updated version of docker and docker-compose.
-* Go to the folder "bilemo63" and open a terminal
+* Go to the folder "bilemo" and open a terminal
 ```sh
 docker compose build --no-cache
 ```
@@ -52,7 +52,7 @@ php bin/console lexik:jwt:generate-keypair
 
 ## Bugs and Issues
 
-Have a bug or an issue with this blog? [Open a new issue](https://github.com/NICOLASEMERIAU/bilemo63/issues/new) here on GitHub.
+Have a bug or an issue with this blog? [Open a new issue](https://github.com/NICOLASEMERIAU/bilemo/issues/new) here on GitHub.
 
 ## Creator
 
